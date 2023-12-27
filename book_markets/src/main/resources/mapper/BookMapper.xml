@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BookMapper">
+    <resultMap id="bookResultMap" type="Book">
+        <id property="bookId" column="b_bookId"/>
+        <result property="name" column="b_name"/>
+        <result property="unitPrice" column="b_unitPrice"/>
+        <result property="author" column="b_author"/>
+        <result property="description" column="b_description"/>
+        <result property="publisher" column="b_publisher"/>
+        <result property="category" column="b_category"/>
+        <result property="unitsInStock" column="b_unitsInStock"/>
+        <result property="releaseDate" column="b_releaseDate"/>
+        <result property="condition" column="b_condition"/>
+        <result property="fileName" column="b_fileName"/>
+        <!-- 나머지 필드들도 위와 같은 방식으로 추가해주세요 -->
+    </resultMap>
+
+    <select id="getAllBookList" resultMap="bookResultMap">
+        SELECT * FROM book
+    </select>
+
+    <select id="getBookListByCategory" resultMap="bookResultMap">
+        SELECT * FROM book WHERE b_category LIKE CONCAT('%', #{category}, '%')
+    </select>
+
+    <select id="getBookListByFilter" resultMap="bookResultMap" parameterType="java.util.Map">
+        <foreach collection="filter.publisher" item="publisher" open="" close="" separator="">
+            SELECT * FROM book WHERE b_publisher LIKE CONCAT('%', #{publisher}, '%')
+        </foreach>
+        <foreach collection="filter.category" item="category" open="" close="" separator="">
+            SELECT * FROM book WHERE b_category LIKE CONCAT('%', #{category}, '%')
+        </foreach>
+    </select>
+
+    <select id="getBookById" resultMap="bookResultMap">
+        SELECT * FROM book WHERE b_bookId = #{bookId}
+    </select>
+
+    <insert id="setNewBook" parameterType="Book">
+        INSERT INTO book (b_bookId, b_name, b_unitPrice, b_author, b_description, b_publisher, b_category, b_unitsInStock, b_releaseDate, b_condition, b_fileName)
+        VALUES (#{bookId}, #{name}, #{unitPrice}, #{author}, #{description}, #{publisher}, #{category}, #{unitsInStock}, #{releaseDate}, #{condition}, #{fileName})
+    </insert>
+
+    <update id="setUpdateBook" parameterType="Book">
+        UPDATE book
+        <trim prefix="set" suffixOverrides=",">
+            b_name = #{name},
+            b_unitPrice = #{unitPrice},
+            b_author = #{author},
+            b_description = #{description},
+            b_publisher = #{publisher},
+            b_category = #{category},
+            b_unitsInStock = #{unitsInStock},
+            b_releaseDate = #{releaseDate},
+            b_condition = #{condition},
+            <if test="fileName != null">
+                b_fileName = #{fileName},
+            </if>
+        </trim>
+        WHERE b_bookId = #{bookId}
+    </update>
+
+    <delete id="setDeleteBook" parameterType="String">
+        DELETE FROM book WHERE b_bookId = #{bookId}
+    </delete>
+</mapper>
