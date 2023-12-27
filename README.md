@@ -8,11 +8,19 @@
 </br>
 ![XL](https://github.com/seokeunpark/Personal_Project5-Spring-MVC-Book_Markets/assets/145525099/ed6a3fb1-325b-41c3-a0aa-24569d6f7245)
 
-
-
-
-
-### 3. 사용 기술
+### 3. 프로젝트 내용
+* 계층적 구조
+* 스프링 폼 태그
+* 파일 업로드
+* 스프링 시큐리티
+* 예외 처리
+* 로그 기록
+* 다국어 처리
+* 유효성 검사
+* 타일즈
+* 데이터베이스 연동
+  
+### 4. 사용 기술
 <div>
 <img src="https://img.shields.io/badge/JAVA-C01818?style=flat-square&logo=coffeescript&logoColor=white" />
 <img src="https://img.shields.io/badge/IntelliJ-000000?style=flat-square&logo=intellijidea&logoColor=white" />
