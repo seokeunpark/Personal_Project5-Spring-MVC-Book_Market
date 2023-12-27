@@ -6,7 +6,8 @@
 ### 2. 프로젝트 참고 교재
 스프링 코딩 공작 (길벗)
 </br>
-![다운로드](https://github.com/seokeunpark/Personal_Project5-Spring-MVC-Book_Market/assets/145525099/9369cb33-b76d-45fd-bcfd-a088a3d20103)
+![XL](https://github.com/seokeunpark/Personal_Project5-Spring-MVC-Book_Markets/assets/145525099/ed6a3fb1-325b-41c3-a0aa-24569d6f7245)
+
 
 
 
